@@ -2,7 +2,7 @@ class Node {
     String key;
     String value;
     Node next;
-    
+
     public Node (String k, String v) {
         key = k;
         value = v;
@@ -13,9 +13,9 @@ public class chainedHash {
 
     private Node[] table;
     private int m;
-    
+
     public chainedHash(int size) {
-        
+
         m = size;
         table = new Node[m + 1];
     }
@@ -27,18 +27,24 @@ public class chainedHash {
         int i = hash(key);
         Node head = table[i];
         Node current = head;
-        
-        while(current != null){
-            if(current.key.equals(key)){
+
+        while (current != null) {
+            if (current.key.equals(key)) {
                 current.value = value;
                 return;
             }
-            current= current.next;
+            current = current.next;
         }
         Node newN = new Node(key, value);
         newN.next = head;
         table[i] = newN;
-        
+
+    }
+    public String lookup(String key){
+
+        int i = hash(key);
+        Node current = table[i];
+
         while(current!= null){
             if(current.key.equals(key))
                 return current.value;
@@ -47,4 +53,3 @@ public class chainedHash {
         return null;
     }
 }
-
