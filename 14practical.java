@@ -8,7 +8,7 @@ public class Main {
         int m = 1000000;
         int repetitions = 30;
         String[][] data = Data.generateData(1000000);
-        int[] loads = {};
+        int[] loads = {750000, 800000, 850000, 900000, 950000};
 
         System.out.println("\nAverage time in seconds");
         System.out.println("--------------------------------");
